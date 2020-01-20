@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+    <named-native-query name="selectApprovalByRequestId" result-set-mapping="approvalByRequestId">
+        <query>
+            SELECT
+                 ot.id AS id
+            FROM
+                 ot_time_approval ot
+            INNER JOIN project project ON project.project_code = ot.project_code
+            WHERE
+                project.delete_flag = 0 AND ot.employee_code = :employeeCode
+            AND ot.date_ot = :dateOT
+            AND ot.project_code = :projectCode
+            AND ot.position_code = :positionCode
+            AND ot.delete_flag = 0
+        </query>
+    </named-native-query>
+    <sql-result-set-mapping name="approvalByRequestId">
+        <constructor-result target-class="jp.co.gzr_internal.api.service.dto.OTTimeApprovalDto">
+            <column name="id" class="java.lang.Integer" />
+        </constructor-result>
+    </sql-result-set-mapping>
+
+    <named-native-query name="insertOTTimeApproval">
+        <query>
+            INSERT INTO ot_time_approval(request_id,
+            employee_code,project_code,position_code,date_ot,approve_time_ot,create_time,update_time,delete_flag)
+            VALUES(:requestId,:employeeCode,:projectCode,:positionCode,:dateOT,:approvalTimeOT,
+            :createTime,:updateTime,0)
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updateOTTimeApproval">
+        <query>
+            UPDATE ot_time_approval
+            SET request_id = :requestId,
+                approve_time_ot= :approveTimeOt,
+                update_time = :currentTime
+            WHERE
+                project_code = :projectCode
+            AND employee_code = :employeeCode
+            AND date_ot = :dateOt
+            AND position_code = :positionCode
+        </query>
+    </named-native-query>
+    <named-native-query name="updateUnApproval">
+        <query>
+            UPDATE ot_time_approval
+            SET delete_flag = 1,
+                update_time = :currentTime
+            WHERE
+                project_code = :projectCode
+            AND employee_code = :employeeCode
+            AND date_ot = :dateOt
+            AND position_code = :positionCode
+            AND delete_flag = 0
+            AND request_id = :requestId
+        </query>
+    </named-native-query>
+</entity-mappings>

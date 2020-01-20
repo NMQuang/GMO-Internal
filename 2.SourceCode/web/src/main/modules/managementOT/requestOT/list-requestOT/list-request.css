@@ -1,0 +1,106 @@
+.combobox {
+    width: 300px;
+    height: 40px;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff !important;
+    background-color: #fff;
+    border: 1px solid #dee2e6 !important;
+    border-color: #aaaaaa !important
+}
+
+.padding-search {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.table-margin {
+    margin-bottom: 30px
+}
+
+.max-width {
+    width: 100%
+}
+
+.active-page>a {
+    background-color: #007bff !important;
+    color: white !important;
+    pointer-events: none;
+}
+
+.active-page {
+    pointer-events: none;
+
+}
+
+.pointer-events {
+    pointer-events: none;
+}
+
+.reset-over-follow {
+    overflow: unset !important
+}
+
+.pointer-events>a {
+
+    color: #aaaaaa !important
+}
+
+.font-weight {
+    font-weight: bold !important
+}
+
+.font-weight>th {
+    font-weight: bold !important
+}
+
+.reset-margin {
+    margin-bottom: 0px
+}
+
+.btn-edit-style {
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.text_center {
+    vertical-align: middle !important;
+}
+
+.fix-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.active>span>span {
+    color: white;
+}
+
+.active {
+    pointer-events: none;
+}
+
+.fix-border-thead {
+    border: 1px solid #000000;
+}
+
+.table>.fix-border-thead>tr>th {
+    color: black;
+    background-color: #ffc10775;
+    border-color: #454d55;
+}
+
+.btn-search {
+    width: 15%;
+    font-weight: bold;
+}
+.lable-front{
+    font-weight: bold;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+    xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+
+    <named-native-query name = "selectByEmployeeCode" result-set-mapping="employeeMailAndNameInfo">
+        <query>
+            SELECT e.employee_name  AS employeeName, 
+                   e.email          AS email
+            FROM employees e
+            WHERE e.employee_code       = :employeeCode
+              AND e.delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name = "selectByRoleId" result-set-mapping="employeeMailAndNameInfo">
+        <query>
+            SELECT e.employee_name  AS employeeName, 
+                   e.email          AS email
+            FROM accounts a
+            JOIN employees e ON e.employee_code = a.employee_code
+            JOIN role r ON r.role_id = a.role_id
+            WHERE r.role_id       = :roleId
+              AND a.delete_flag = 0
+              AND e.delete_flag = 0
+              AND r.delete_flag = 0
+        </query>
+    </named-native-query>
+    
+    <sql-result-set-mapping name="employeeMailAndNameInfo">
+        <constructor-result
+            target-class="jp.co.gzr_internal.api.service.dto.EmployeeDto">
+            <column name="employeeName"/>
+            <column name="email"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+
+</entity-mappings>

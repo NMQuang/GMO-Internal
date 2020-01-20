@@ -1,0 +1,49 @@
+.active-page>a {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.fix-container-fluid {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center
+}
+
+.fix-margin {
+    margin-right: 100px
+}
+
+.action {
+    background-color: #c0c0c0;
+}
+
+.style-weekend {
+    background-color: #696969
+}
+
+.font-weigth {
+    font-weight: bold;
+}
+
+.fix-border-thead {
+    border: 1px solid #000000;
+}
+
+.table>.fix-border-thead>tr>th {
+    color: black;
+    background-color: #ffc10775;
+    border-color: #454d55;
+}
+.lable-front{
+    font-weight: bold;
+}

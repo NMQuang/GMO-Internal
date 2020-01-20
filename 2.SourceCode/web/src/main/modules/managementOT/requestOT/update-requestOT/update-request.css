@@ -1,0 +1,50 @@
+.container-fluid {
+    width: 1200px;
+}
+
+.text-area-table {
+    resize: none
+}
+
+.btn-add-remove {
+    width: 45px;
+    height: 38px;
+    position: relative;
+}
+
+.btn-icon-add-remove {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.icon-up {
+    font-size: 20px;
+    color: green;
+}
+
+.icon-down {
+    font-size: 20px;
+    color: #ff3547;
+}
+
+.icon-minus {
+    font-size: 20px;
+}
+
+.btn-send {
+    width: 15%;
+    font-weight: bold;
+}
+
+.lable-front {
+    font-weight: bold;
+}
+
+.text-area-custom {
+    resize: none;
+}

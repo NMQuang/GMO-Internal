@@ -1,0 +1,116 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.w-200 {
+  width: 20%;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.container-fluid {
+  width: 1200px !important;
+}
+
+.btn-w-13 {
+  width: 13%;
+}
+
+.height {
+  min-height: 100vh;
+}
+
+.justify-content {
+  flex: 2;
+}
+
+.col-sm-4 {
+  max-width: 25.333333% !important;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #2bbbad !important;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+  border-radius: .125rem;
+}
+
+.dropdown-menu {
+  padding: .5rem;
+}
+
+#headingOne {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+table.table td {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.btn-none-pm {
+  margin: 0;
+  padding: .375rem .75rem;
+}
+
+table.table {
+  margin-bottom: .5rem
+}
+
+
+
+/* .container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #ebeeef;
+} */

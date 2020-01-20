@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+    xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+    <named-native-query name="insertRequestDetail" >
+        <query>
+            INSERT INTO request_detail(request_id, employee_code, position_code, date_ot,plan_time_ot, note, delete_flag,create_time,update_time)
+            VALUES(:requestId,:employeeCode,:positionCode,:dateOT,:timeOT, :note,:deleteFlag,:createTime,:updateTime)
+        </query>
+    </named-native-query>
+
+    <named-native-query name="selectDetailByRequestId" result-set-mapping="requestDetailByRequestId">
+        <query>
+            SELECT 
+                rd.id                                 as requestDetailId,
+                DATE_FORMAT(rd.date_ot,'%Y-%m-%d') as dateOT,
+                rd.plan_time_ot                       as planTimeOT,
+                rd.actual_time_ot                     as actualTimeOT,
+                rd.approval_time_ot                   as approvalTimeOT,
+                rd.employee_code                      as employeeCode,
+                rd.position_code                      as positionCode,
+                rd.note                               as note
+            FROM request_detail rd INNER JOIN request r ON rd.request_id=r.id 
+            WHERE r.delete_flag = 0 AND rd.delete_flag = 0
+                  AND r.id=:requestId
+        </query>
+    </named-native-query>
+    
+    <named-native-query name="selectDetailSearchByRequestId" result-set-mapping="requestDetailByRequestId">
+        <query>
+            SELECT 
+                rd.id                                 as requestDetailId,
+                DATE_FORMAT(rd.date_ot,'%Y-%m-%d') as dateOT,
+                rd.plan_time_ot                       as planTimeOT,
+                rd.actual_time_ot                     as actualTimeOT,
+                rd.approval_time_ot                   as approvalTimeOT,
+                rd.employee_code                      as employeeCode,
+                rd.position_code                      as positionCode,
+                rd.note                               as note
+            FROM request_detail rd INNER JOIN request r ON rd.request_id=r.id 
+            WHERE r.delete_flag = 0 AND rd.delete_flag = 0
+                  AND  r.id=:requestId
+                  AND DATE_FORMAT(rd.date_ot,'%Y-%m')=:dateSearch
+        </query>
+    </named-native-query>
+    
+    <named-native-query name="updateRequestDetail">
+        <query>
+            UPDATE request_detail
+            SET date_ot = :dateOt,
+                employee_code= :employeeCode,
+                plan_time_ot = :timeOT,
+                note = :note,
+                update_time = :currentTime
+            WHERE id = :id
+              AND delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updateApprovalTimeOTById">
+        <query>
+            UPDATE request_detail
+            SET approval_time_ot = :approvalTimeOT,
+                note = :note,
+                update_time = :currentTime
+            WHERE id = :id
+              AND delete_flag = 0
+        </query>
+    </named-native-query>
+    
+    <named-native-query name="deleteRequestDetail">
+        <query>
+            UPDATE request_detail
+            SET delete_flag = 1,
+                update_time = :currentTime
+            WHERE id = :id
+              AND delete_flag = 0
+        </query>
+    </named-native-query>
+    
+
+    <sql-result-set-mapping name="requestDetailByRequestId">
+        <constructor-result target-class="jp.co.gzr_internal.api.service.dto.RequestDetailDto">
+            <column name="requestDetailId" class="java.lang.Integer"/>
+            <column name="dateOT"/>
+            <column name="planTimeOT" class="java.lang.Integer"/>
+            <column name="actualTimeOT" class="java.lang.Integer"/>
+            <column name="approvalTimeOT" class="java.lang.Integer"/>
+            <column name="employeeCode" />
+            <column name="positionCode" class="java.lang.Integer"/>
+            <column name="note"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+</entity-mappings>

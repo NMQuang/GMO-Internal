@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+
+    <named-native-query name="checkProjectOfEmployee">
+        <query>
+            SELECT
+                COUNT(prd.project_code) as count
+            FROM
+                project_detail prd
+            INNER JOIN project prj ON prd.project_code = prj.project_code
+            AND prj.delete_flag = 0
+            WHERE
+                prd.delete_flag = 0
+            AND prd.project_code = :projectCode
+            AND prd.employee_code = :employeeCode
+            AND prd.position_code = :positionCode
+        </query>
+    </named-native-query>
+    <named-native-query name="selectPositionByEmployee" result-set-mapping="postionByEmployeeDto">
+        <query>
+            SELECT position.id AS positionCode,
+                   position.position_name AS positionName
+            FROM project_detail pd
+            INNER JOIN project prj ON prj.project_code = pd.project_code AND prj.delete_flag = 0
+            INNER JOIN m_position position ON position.id = pd.position_code AND position.delete_flag = 0
+            WHERE pd.project_code = :projectCode
+                AND pd.employee_code = :employeeCode
+                AND pd.delete_flag = 0
+        </query>
+    </named-native-query>
+    <sql-result-set-mapping name="postionByEmployeeDto">
+        <constructor-result target-class="jp.co.gzr_internal.api.service.dto.PositionByEmployeeDto">
+            <column name="positionCode" class="java.lang.Integer"/>
+            <column name="positionName" />
+        </constructor-result>
+    </sql-result-set-mapping>
+</entity-mappings>

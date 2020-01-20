@@ -1,0 +1,101 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+body {
+    padding: 0;
+    margin: 0
+}
+
+#forbidden {
+    position: relative;
+    height: 83.8vh
+}
+
+#forbidden .forbidden {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.forbidden {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4
+}
+
+.forbidden .forbidden-403 {
+    height: 190px
+}
+
+.forbidden .forbidden-403 h1 {
+    font-family: montserrat, sans-serif;
+    font-size: 146px;
+    font-weight: 700;
+    margin: 0;
+    color: #232323
+}
+
+.forbidden .forbidden-403 h1>span {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-image: url(../../assets/img/emoji.jpg);
+    background-size: cover;
+    -webkit-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+    z-index: -1
+}
+
+.forbidden h2 {
+    font-family: montserrat, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    color: #232323
+}
+
+.forbidden p {
+    font-family: montserrat, sans-serif;
+    color: #787878;
+    font-weight: 300
+}
+
+.forbidden a {
+    font-family: montserrat, sans-serif;
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 700;
+    background-color: #f99827;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+    -webkit-transition: .2s all;
+    transition: .2s all
+}
+
+.forbidden a:hover {
+    opacity: .8
+}
+
+@media only screen and (max-width:767px) {
+    .forbidden .forbidden-403 {
+        height: 115px
+    }
+
+    .forbidden .forbidden-403 h1 {
+        font-size: 86px
+    }
+
+    .forbidden .forbidden-403 h1>span {
+        width: 86px;
+        height: 86px
+    }
+}

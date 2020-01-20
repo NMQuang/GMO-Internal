@@ -1,0 +1,90 @@
+.combobox {
+    width: 300px;
+    height: 40px;
+}
+
+.w-200 {
+    width: 20%;
+}
+
+.container-fluid {
+    max-width: 1300px;
+}
+
+.btn-w-13 {
+    width: 13%;
+}
+
+.height {
+    min-height: 100vh;
+}
+
+.justify-content {
+    flex: 2;
+}
+
+/* 
+.col-sm-4 {
+    max-width: 25.333333% !important;
+} */
+
+.nav-link {
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #2bbbad !important;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    border-radius: .125rem;
+}
+
+.dropdown-menu {
+    padding: .5rem;
+}
+
+#headingOne {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+table.table td {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.btn-none-pm {
+    margin: 0;
+    padding: .375rem .75rem;
+}
+
+table.table {
+    margin-bottom: .5rem
+}
+
+.active-page>a {
+    background-color: #007bff !important;
+    color: white !important;
+    pointer-events: none;
+}
+
+.active-page {
+    pointer-events: none;
+
+}
+
+.pointer-events {
+    pointer-events: none;
+}
+
+.reset-over-follow {
+    overflow: unset !important
+}
+
+.pointer-events>a {
+
+    color: #aaaaaa !important
+}

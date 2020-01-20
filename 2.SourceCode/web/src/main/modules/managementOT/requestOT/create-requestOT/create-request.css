@@ -1,0 +1,55 @@
+.container-fluid {
+    width: 1200px;
+}
+
+.text-area-table {
+    resize: none
+}
+
+.btn-add-remove {
+    width: 45px;
+    height: 40px;
+    position: relative;
+}
+
+.btn-icon-add-remove {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.btn-send {
+    width: 20%;
+}
+
+.font-weigth {
+    font-weight: bold;
+}
+
+.fix-border-thead {
+    border: 1px solid #000000;
+}
+
+.table>.fix-border-thead>tr>th {
+    color: black;
+    background-color: #ffc10775;
+    border-color: #454d55;
+}
+
+.td-font {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important;
+    font-size: 1rem;
+    font-weight: 400;
+
+}
+
+.text-area-custom {
+    resize: none;
+}
+.lable-front{
+    font-weight: bold;
+}

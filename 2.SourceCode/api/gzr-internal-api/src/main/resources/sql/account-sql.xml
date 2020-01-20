@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+    xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+     <named-native-query name = "selectAccountInfo" result-set-mapping="accountInfo">
+        <query>
+            SELECT e.employee_code      AS employeeCode,
+                   e.employee_name      AS employeeName,
+                   a.role_id            AS roleId
+            FROM accounts a
+            JOIN employees e ON e.employee_code = a.employee_code
+            WHERE e.email       = :email
+              AND a.delete_flag = 0
+              AND e.delete_flag = 0
+        </query>
+    </named-native-query>
+
+     <named-native-query name = "updateLastAccessDateByEmployeeCode">
+        <query>
+            UPDATE accounts
+            SET last_access_date = :currentDateTime,
+                update_time      = :currentDateTime
+            WHERE employee_code  = :employeeCode
+              AND delete_flag    = 0
+        </query>
+    </named-native-query>
+    
+    <named-native-query name="updateLastLogOut">
+        <query>
+            UPDATE accounts
+            SET last_logout_date = :currentDateTime,
+                update_time      = :currentDateTime
+            WHERE employee_code  = :employeeCode
+              AND delete_flag    = 0
+        </query>
+    </named-native-query>
+    
+    <named-native-query name = "selectPasswordByEmail">
+        <query>
+            SELECT a.password as password
+            FROM accounts a
+            JOIN employees e ON e.employee_code = a.employee_code
+            WHERE e.email       = :email
+              AND a.delete_flag = 0
+              AND e.delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updatePasswordForAccount">
+        <query>
+            UPDATE accounts a
+            JOIN employees e ON e.employee_code = a.employee_code
+            SET a.password         = :password,
+                a.update_time      = :currentDateTime
+            WHERE e.email       = :email
+              AND a.delete_flag = 0
+              AND e.delete_flag = 0
+        </query>
+    </named-native-query>
+    
+    <named-native-query name = "getAccountWithAuthorities" result-set-mapping="accountLogin">
+        <query>
+            SELECT e.email          AS email,
+                   a.password       AS password,
+                   e.employee_code  AS employeeCode,
+                   a.role_id        AS roleId
+            FROM accounts a
+            JOIN employees e ON e.employee_code = a.employee_code
+            WHERE e.email       = :email
+              AND a.delete_flag = 0
+              AND e.delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="accountInfo">
+        <constructor-result
+            target-class="jp.co.gzr_internal.api.service.dto.AccountAfterLoginDto">
+            <column name="employeeCode"/>
+            <column name="employeeName"/>
+            <column name="roleId"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+    
+    <sql-result-set-mapping name="accountLogin">
+        <constructor-result
+            target-class="jp.co.gzr_internal.api.service.dto.AccountDto">
+            <column name="email"/>
+            <column name="password"/>
+            <column name="employeeCode"/>
+            <column name="roleId"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+
+</entity-mappings>

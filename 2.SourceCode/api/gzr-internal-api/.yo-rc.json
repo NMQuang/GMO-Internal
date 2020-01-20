@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "jp.co.gzr_internal.api"
+    },
+    "jhipsterVersion": "5.3.4",
+    "applicationType": "monolith",
+    "baseName": "gzr_internal_api",
+    "packageName": "jp.co.gzr_internal.api",
+    "packageFolder": "jp/co/management/api",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YjhlODE4YzY2NWMwMWE2NThlMzRiYTNmYzQxY2UxNGZmZWYwNGEyYjc3NWRmMGY0ZjNkY2RmN2RlODc1MzU2Yzg4YjVlN2Y2N2FiZDNlMzI2NjU1YTkxMmNkOTI2ODY3NDUwYmQyOTIzZDg5YzBiNzYyNzVmOWZiNGYxNTEzZWE=",
+    "enableTranslation": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "skipClient": true
+  }
+}

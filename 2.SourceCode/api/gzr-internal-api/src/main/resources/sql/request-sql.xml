@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+ 
+    
+    <named-native-query name="selectByRequestId" result-set-mapping="requestByRequestId">
+        <query>
+            SELECT
+            r.id AS requestId,
+            r.project_code AS projectCode,
+            CASE
+
+            WHEN project.project_name_vn = ''
+            AND project.project_name_jp != '' THEN
+            project.project_name_jp
+            WHEN project.project_name_vn != ''
+            AND project.project_name_jp = '' THEN
+            project.project_name_vn ELSE project.project_name_vn
+            END AS projectName,
+            DATE_FORMAT( r.update_time, '%Y-%m-%d %T' ) AS updateAt,
+            r.reason AS reason,
+            detail.employee_code AS employeeCode,
+            r.status AS status,
+            e.email AS email,
+            e.employee_name AS employeeName
+            FROM
+            request r
+            INNER JOIN project project ON project.project_code = r.project_code
+            INNER JOIN project_detail detail ON detail.project_code = project.project_code
+            INNER JOIN employees e ON detail.employee_code = e.employee_code
+            WHERE
+            r.id = :requestId
+            AND r.delete_flag = 0
+            AND e.delete_flag = 0
+            AND project.delete_flag = 0
+            AND detail.delete_flag = 0
+            AND detail.position_code = 3
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updateRequest">
+        <query>
+            UPDATE request
+            SET project_code = :projectCode,
+            reason= :reason,
+            update_time = :currentTime
+            WHERE id =
+            :requestId
+            AND :updateAt = DATE_FORMAT(update_time,'%Y-%m-%d %T')
+            AND status = 1
+            AND delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updateStatusByIdAndStatusRequired">
+        <query>
+            UPDATE request
+            SET status = :status,
+            update_time = :currentTime,
+            approver = :approver
+            WHERE id = :requestId
+            AND :updateAt = DATE_FORMAT(update_time,'%Y-%m-%d %T')
+            AND status in (:statusRequired, :status)
+            AND
+            delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name="updateStatusById">
+        <query>
+            UPDATE request
+            SET status = :status,
+            update_time = :currentTime,
+            approver = :approver
+            WHERE id = :requestId
+            AND :updateAt = DATE_FORMAT(update_time,'%Y-%m-%d %T')
+            AND delete_flag = 0
+        </query>
+    </named-native-query>
+
+    <named-native-query name="selectProjectName">
+        <query>
+            SELECT project_name as projectName
+            FROM request
+            WHERE delete_flag = 0
+            GROUP BY project_name
+        </query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="requestByRequestId">
+        <constructor-result target-class="jp.co.gzr_internal.api.service.dto.RequestDto">
+            <column name="requestId" class="java.lang.Integer" />
+            <column name="projectCode" />
+            <column name="projectName" />
+            <column name="reason" />
+            <column name="employeeCode" />
+            <column name="updateAt" />
+            <column name="status" />
+            <column name="email" />
+            <column name="employeeName" />
+        </constructor-result>
+    </sql-result-set-mapping>
+</entity-mappings>
