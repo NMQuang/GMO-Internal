@@ -42,7 +42,7 @@
     "webpack": "4.36.1",
     "webpack-cli": "3.3.6",
     "webpack-dev-server": "3.7.2",
-    "xlsx": "0.15.1"
+    "xlsx": "0.17.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
