@@ -19,7 +19,7 @@
     "express": "4.17.1",
     "file-saver": "2.0.2",
     "jwt-decode": "2.2.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "moment-timezone": "0.5.26",
     "path": "0.12.7",
     "prop-types": "15.7.2",
